@@ -1,4 +1,3 @@
-import AddButton from "./Addbutton";
 
 type HeroProps = {
     // I hate this
@@ -24,7 +23,6 @@ export default function Hero({ featuredItem }: HeroProps) {
                     <p className="text-sm lg:text-lg">{featuredItem?.overview}</p>
                 </div>
             </div>
-            <AddButton />
         </div>
     );
 }

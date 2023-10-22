@@ -1,7 +1,12 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
+import DeleteButton from "@/app/components/Deletebutton";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { getUserMovies } from "@/app/lib/dbActions"
+import { currentUser } from "@clerk/nextjs";
 
-async function routeData(id: string) {
+async function routeData(id: string | undefined) {
+    if (!id) {
+        throw new Error(`No user Id provided`);
+    }
     try {
         const userMovies = await getUserMovies(id)
         return userMovies;
@@ -11,9 +16,10 @@ async function routeData(id: string) {
 }
 
 export default async function Page({ params }: { params: { userId: string } }) {
-    const movies = await routeData(params.userId)
+    const user = await currentUser();
+    const movies = await routeData(user?.id)
     return (
-        <div className="flex flex-wrap">
+        <div className="">
             {movies?.map((movie) => (
                 <Card>
                     <CardHeader>
@@ -22,6 +28,9 @@ export default async function Page({ params }: { params: { userId: string } }) {
                             <img src={`${movie.imgUrl}`} />
                         </CardContent>
                     </CardHeader>
+                    <CardFooter>
+                        <DeleteButton title={movie.title!} movieId={movie?.movieId!} userId={user?.id} />
+                    </CardFooter>
                 </Card>
             ))}
         </div>

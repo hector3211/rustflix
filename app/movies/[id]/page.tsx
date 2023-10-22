@@ -1,6 +1,7 @@
 import ActorCaoursel from "@/app/components/Actorcaoursel"
 import AddButton from "@/app/components/Addbutton"
 import { getMovieStars, getSelectedMovie, getSelectedShow, getShowStars } from "@/app/lib/movieActions"
+import { auth, currentUser } from "@clerk/nextjs";
 
 async function routeData(id: number) {
     try {
@@ -16,7 +17,9 @@ async function routeData(id: number) {
 }
 
 export default async function Page({ params }: { params: { id: number } }) {
+    const user = await currentUser();
     const { movie, actors } = await routeData(params.id);
+    const postImg = `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces`
     return (
         <div className="flex flex-col">
             <div className="sm:hidden lg:text-white lg:block lg:w-1/3 lg:bg-transparent lg:backdrop-blur-2xl lg:text-3xl lg:absolute lg:top-[18%] lg:left-5 lg:outline lg:outline-2 lg:outline-offset-2 lg:outline-primary lg:rounded-md lg:p-3 lg:h-52">
@@ -60,7 +63,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                         <p>{movie?.release_date}</p>
                         <p>{movie?.original_language}</p>
                     </div>
-                    <AddButton />
+                    <AddButton title={movie?.title} movieId={movie?.id} imgUrl={`${postImg}${movie?.backdrop_path}`} userId={user?.id} />
                 </div>
             </div>
             <div className="mb-5">
