@@ -1,8 +1,8 @@
 "use client";
 
-import { LikedMovie, NewLikedMovie } from "@/db/schema";
+import { LikedVideo, NewLikedVideo } from "@/db/schema";
 import { Button } from "./ui/button";
-import { addUserMovie, deleteUserMovie } from "../lib/dbActions";
+import { addUserVideo, deleteUserVideo } from "../lib/dbActions";
 import { useEffect, useState } from "react";
 import { AlertPop } from "./Alertpopup";
 
@@ -15,14 +15,14 @@ type ButtonProps = {
 export default function DeleteButton(data: ButtonProps) {
     const [showAlert, setShowAlert] = useState<false | true>(false);
     // console.log(`data that addButton collected -- ${JSON.stringify(data)}`)
-    async function deleteItem(userId: string, movieId: number) {
+    async function deleteVideo(userId: string, movieId: number) {
         // add movie to users movie list
         // console.log(`Got the data in the async funct -${JSON.stringify(movie)}\n`)
         console.log(`Got user Id: ${userId} and movie Id: ${movieId}`);
         if (!userId) {
             return;
         }
-        const res = await deleteUserMovie(userId!, movieId!)
+        const res = await deleteUserVideo(userId!, movieId!)
         setShowAlert(true);
     }
 
@@ -35,7 +35,7 @@ export default function DeleteButton(data: ButtonProps) {
     }, [showAlert])
     return (
         <>
-            <Button onClick={() => deleteItem(data.userId!, data.movieId!)} className="text-lg w-28 bg-gradient-to-tr from-orange-500 to-red-500 active:scale-105 ">
+            <Button onClick={() => deleteVideo(data.userId!, data.movieId!)} className="hover:scale-105 active:scale-95">
                 Delete
             </Button>
             {showAlert ? (

@@ -2,9 +2,9 @@
 
 import { db } from "@/db";
 import {
-    LikedMovie,
-    NewLikedMovie,
-    userMoives,
+    LikedVideo,
+    NewLikedVideo,
+    userVideos,
     users,
     User,
 } from "@/db/schema";
@@ -32,9 +32,9 @@ export async function getUserInfo(
     return undefined;
 }
 
-export async function getUserMovies(
+export async function getUserVideos(
     userClerkId: string,
-): Promise<LikedMovie[] | null | undefined> {
+): Promise<LikedVideo[] | null | undefined> {
     try {
         const data = await db.query.users.findFirst({
             where: eq(users.clerkId, userClerkId),
@@ -52,9 +52,9 @@ export async function getUserMovies(
     }
 }
 
-export async function addUserMovie(movie: NewLikedMovie) {
+export async function addUserVideo(movie: NewLikedVideo) {
     try {
-        await db.insert(userMoives).values({
+        await db.insert(userVideos).values({
             ...movie,
         });
         revalidateTag("usermovies")
@@ -63,16 +63,16 @@ export async function addUserMovie(movie: NewLikedMovie) {
     }
 }
 
-export async function deleteUserMovie(
+export async function deleteUserVideo(
     userId: string,
     movieId: number,
 ) {
     console.log(`Got user Id: ${userId} and movie Id: ${movieId}`);
     try {
         const selected = await db
-            .delete(userMoives)
+            .delete(userVideos)
             .where(
-                and(eq(userMoives.userId, userId), eq(userMoives.movieId, movieId)),
+                and(eq(userVideos.userId, userId), eq(userVideos.movieId, movieId)),
             )
             .returning();
         console.log(`Movie ${selected[0].id} Deleted`)

@@ -11,6 +11,11 @@ export const RoleTypes = {
     USER: "USER",
 } as const;
 
+export const VideoTypes = {
+    MOVIE: "MOVIE",
+    SHOW: "SHOW"
+} as const;
+
 export type UserMovieList = {
     movieId: number;
     title: string;
@@ -18,6 +23,7 @@ export type UserMovieList = {
 
 export const users = pgTable("users", {
     id: serial('id').primaryKey(),
+    // fix typo should be "clerk_user_id"
     clerkId: varchar("cleak_user_id"),
     username: varchar("namer_name").notNull(),
     email: varchar("email").notNull().unique(),
@@ -28,27 +34,26 @@ export const users = pgTable("users", {
 });
 
 export const userRelations = relations(users, ({ many }) => ({
-    movies: many(userMoives),
+    movies: many(userVideos),
 }));
 
-export const userMoives = pgTable("user_movies", {
+export const userVideos = pgTable("user_videos", {
     id: serial('id').primaryKey(),
     movieId: integer("movie_id").unique(),
     title: varchar("title"),
     imgUrl: varchar("img_url"),
+    videoType: varchar("video_type", { enum: [VideoTypes.MOVIE, VideoTypes.SHOW] }),
     userId: varchar("user_id"),
 });
 
-export const userMoivesRelations = relations(userMoives, ({ one }) => ({
+export const userVideosRelations = relations(userVideos, ({ one }) => ({
     user: one(users, {
-        fields: [userMoives.userId],
+        fields: [userVideos.userId],
         references: [users.clerkId],
     }),
 }));
 
 export type User = InferSelectModel<typeof users>;
 export type NewUser = InferInsertModel<typeof users>;
-export type LikedMovie = InferSelectModel<typeof userMoives>;
-export type NewLikedMovie = InferInsertModel<typeof userMoives>;
-// export const insertUserSchema = createInsertSchema(users);
-// export const selectUserSchema = createSelectSchema(users);
+export type LikedVideo = InferSelectModel<typeof userVideos>;
+export type NewLikedVideo = InferInsertModel<typeof userVideos>;

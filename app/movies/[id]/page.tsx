@@ -1,7 +1,7 @@
 import ActorCaoursel from "@/app/components/Actorcaoursel"
 import AddButton from "@/app/components/Addbutton"
 import { getMovieStars, getSelectedMovie, getSelectedShow, getShowStars } from "@/app/lib/movieActions"
-import { auth, currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
 
 async function routeData(id: number) {
     try {
@@ -63,7 +63,7 @@ export default async function Page({ params }: { params: { id: number } }) {
                         <p>{movie?.release_date}</p>
                         <p>{movie?.original_language}</p>
                     </div>
-                    <AddButton title={movie?.title} movieId={movie?.id} imgUrl={`${postImg}${movie?.backdrop_path}`} userId={user?.id} />
+                    <AddButton videoType={"MOVIE"} title={movie?.title} movieId={movie?.id} imgUrl={`${postImg}${movie?.backdrop_path}`} userId={user?.id} />
                 </div>
             </div>
             <div className="mb-5">

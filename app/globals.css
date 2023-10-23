@@ -1,17 +1,17 @@
 @tailwind base;
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 15px;
+  width: 12px;
 }
 
 *::-webkit-scrollbar-track {
   background: gray;
-  border-radius: 5px;
+  border-radius: 0px;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: black;
-  border-radius: 14px;
+  border-radius: 5px;
   border: 1px solid white;
 }
 

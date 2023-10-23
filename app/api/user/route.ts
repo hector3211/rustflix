@@ -1,9 +1,9 @@
 import { db } from "@/db";
-import { LikedMovie, userMoives } from "@/db/schema";
+import { LikedVideo, userVideos } from "@/db/schema";
 
 export async function POST(req: Request) {
     const movie = await req.json();
-    await db.insert(userMoives).values({
+    await db.insert(userVideos).values({
         ...movie,
     });
 

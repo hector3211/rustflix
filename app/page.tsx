@@ -39,12 +39,12 @@ async function getAllContent() {
 export default async function Home() {
     const data = await getAllContent();
     return (
-        <div>
+        <div className="">
             <Hero featuredItem={data?.featurd} />
-            <Caoursel movies={data?.popularMovies as Movie[]} type="movies" />
-            <Caoursel movies={data?.popularTvShows as Movie[]} type="shows" />
-            <Caoursel movies={data?.trendingMovies as Movie[]} type="movies" />
-            <Caoursel movies={data?.treandingTvShows as Movie[]} type="shows" />
+            <Caoursel videos={data?.popularMovies as Movie[]} type="movies" />
+            <Caoursel videos={data?.popularTvShows as Movie[]} type="shows" />
+            <Caoursel videos={data?.trendingMovies as Movie[]} type="movies" />
+            <Caoursel videos={data?.treandingTvShows as Movie[]} type="shows" />
         </div>
     );
 }

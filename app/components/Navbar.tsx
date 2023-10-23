@@ -34,18 +34,17 @@ function Desktop() {
                     Rustflix
                 </h1>
             </Link>
-            <div className="flex items-center space-x-3">
-                <Button variant={"link"} className="lg:text-lg">
+            <div className="flex items-center space-x-1">
+                <Button variant={"link"} className="lg:text-lg hover:scale-105 active:scale-96">
                     <Link href={"/"}>Home</Link>
                 </Button>
-                <Button variant={"link"} className="lg:text-lg">
+                <Button variant={"link"} className="lg:text-lg hover:scale-105 active:scale-96">
                     <Link href={"/"}>About</Link>
                 </Button>
-
                 {isSignedIn || user ? (
-                    <Button variant={"link"} className="lg:text-lg">
-                        <Link href={`/user/movies/${userId}`}>
-                            Movies
+                    <Button variant={"link"} className="lg:text-lg hover:scale-105 active:scale-96">
+                        <Link href={`/user/videos`}>
+                            Favorites
                         </Link>
                     </Button>
                 ) : null}

@@ -1,25 +1,27 @@
 "use client";
 
-import { NewLikedMovie } from "@/db/schema";
+import { NewLikedVideo } from "@/db/schema";
 import { Button } from "./ui/button";
-import { addUserMovie } from "../lib/dbActions";
+import { addUserVideo } from "../lib/dbActions";
 import { useEffect, useState } from "react";
 import { AlertPop } from "./Alertpopup";
+import { VideoTypes } from "@/db/schema";
 
 type ButtonProps = {
     title?: string;
     movieId?: number;
     imgUrl?: string;
+    videoType?: (typeof VideoTypes)[keyof typeof VideoTypes];
     userId?: string;
 }
 
 export default function AddButton(data: ButtonProps) {
     const [showAlert, setShowAlert] = useState<false | true>(false);
     // console.log(`data that addButton collected -- ${JSON.stringify(data)}`)
-    async function addMovie(movie: NewLikedMovie) {
+    async function addVideo(video: NewLikedVideo) {
         // add movie to users movie list
-        console.log(`Got the data in the async funct -${JSON.stringify(movie)}\n`)
-        await addUserMovie(movie)
+        console.log(`Got the data in the async funct -${JSON.stringify(video)}\n`)
+        await addUserVideo(video)
         setShowAlert(true);
     }
 
@@ -32,7 +34,7 @@ export default function AddButton(data: ButtonProps) {
     }, [showAlert])
     return (
         <>
-            <Button onClick={() => addMovie(data)} className="text-lg absolute top-1/2 right-10 w-28 bg-gradient-to-tr from-orange-500 to-red-500 active:scale-105 ">
+            <Button onClick={() => addVideo(data)} className="text-lg absolute top-1/2 right-10 w-28 bg-gradient-to-tr from-orange-500 to-red-500 active:scale-105 ">
                 Add
             </Button>
             {showAlert ? (
