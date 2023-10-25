@@ -41,7 +41,7 @@ export default function ActorCaoursel({ actors, type }: ActorCaourselProps) {
                         <div className="flex overflow-hidden max-w-full p-4 space-x-2 bg-neutral rounded-box">
 
                             {actorData?.map((actor) => (
-                                <Link href={`/actor/${actor?.id}/${type}`}>
+                                <Link key={actor?.id} href={`/actor/${actor?.id}/${type}`}>
                                     <div
                                         className="min-w-max"
                                         typeof="button"

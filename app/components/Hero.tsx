@@ -1,28 +1,28 @@
+import { Movie, TvShow } from "../lib/types";
 
 type HeroProps = {
-    // I hate this
-    featuredItem: any | undefined;
+  // I hate this
+  featuredItem: (Movie & TvShow) | undefined;
 };
 
 export default function Hero({ featuredItem }: HeroProps) {
-    return (
-        <div className="relative text-gray-500 dark:text-gray-200">
-            <img
-                src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${featuredItem?.backdrop_path}`}
-                alt={`featured Poster`}
-                className="sm:h-[400px] object-top lg:w-full lg:h-fit"
-            />
-            <div className=" p-3 bg-transparent backdrop-blur-3xl shadow-lg shadow-indigo-300/30 rounded-lg ">
-                <div className="text-md ml-1">
-                    <h2 className="text-xl lg:text-2xl">{featuredItem?.title}</h2>
-                    <h2 className="text-xl lg:text-2xl">{featuredItem?.name}</h2>
-                    <div className="flex items-center py-1">
-                        <p>⭐{featuredItem?.vote_average?.toFixed(1)}</p>
-                        <p className="ml-8 text-lg">{featuredItem?.vote_count} Reviews</p>
-                    </div>
-                    <p className="text-sm lg:text-lg">{featuredItem?.overview}</p>
-                </div>
-            </div>
+  return (
+    <div className="relative text-gray-500 dark:text-gray-200">
+      <img
+        src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${featuredItem?.backdrop_path}`}
+        alt={`featured Poster`}
+        className="object-top sm:h-[400px] lg:h-fit lg:w-full"
+      />
+      <div className=" max-h-[20rem] bg-gray-600 p-5 text-gray-300 shadow-lg shadow-white/50 backdrop-blur-3xl dark:bg-transparent dark:text-gray-300 lg:absolute lg:left-5 lg:top-1/2 lg:max-w-[500px] lg:rounded-lg dark:lg:bg-zinc-950/90">
+        <div className="flex items-center space-x-1 py-1 text-sm">
+          <h2 className="text-sm font-medium">{featuredItem?.title}</h2>
+          <h2 className="text-sm font-medium">{featuredItem?.name}</h2>
+          <p>⭐{featuredItem?.vote_average?.toFixed(1)}</p>
         </div>
-    );
+        <p className="lg:text-md text-justify text-xs ">
+          {featuredItem?.overview}
+        </p>
+      </div>
+    </div>
+  );
 }
