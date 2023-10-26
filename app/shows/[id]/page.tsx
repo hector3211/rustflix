@@ -22,10 +22,6 @@ export default async function Page({ params }: { params: { id: number } }) {
   const { show, actors } = await routeData(params.id);
   return (
     <div className="flex flex-col">
-      <div className="sm:hidden lg:absolute lg:left-5 lg:top-[18%] lg:block lg:h-52 lg:w-1/3 lg:rounded-md lg:bg-transparent lg:p-3 lg:text-3xl lg:text-white lg:outline lg:outline-2 lg:outline-offset-2 lg:outline-primary lg:backdrop-blur-2xl">
-        <p>{show?.original_name}</p>
-        <p>{show?.vote_average}</p>
-      </div>
       <img
         src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${show?.backdrop_path}`}
         alt={`Poster for movie`}

@@ -25,7 +25,7 @@ export default function ThemeToggleButton() {
       ) : (
         <Button
           variant={"ghost"}
-          className="dark:text-white text-lg hover:dark:bg-gray-900"
+          className="text-lg dark:text-white hover:dark:bg-gray-900"
           onClick={() => setTheme("light")}
         >
           <Sun />

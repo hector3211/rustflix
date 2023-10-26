@@ -1,11 +1,6 @@
 import ActorCaoursel from "@/app/components/Actorcaoursel";
 import AddButton from "@/app/components/Addbutton";
-import {
-  getMovieStars,
-  getSelectedMovie,
-  getSelectedShow,
-  getShowStars,
-} from "@/app/lib/movieActions";
+import { getMovieStars, getSelectedMovie } from "@/app/lib/movieActions";
 import { currentUser } from "@clerk/nextjs";
 
 async function routeData(id: number) {
@@ -27,22 +22,18 @@ export default async function Page({ params }: { params: { id: number } }) {
   const postImg = `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces`;
   return (
     <div className="flex flex-col">
-      <div className="sm:hidden lg:absolute lg:left-5 lg:top-[18%] lg:block lg:h-52 lg:w-1/3 lg:rounded-md lg:bg-transparent lg:p-3 lg:text-3xl lg:text-white lg:outline lg:outline-2 lg:outline-offset-2 lg:outline-primary lg:backdrop-blur-2xl">
-        <p>{movie?.title}</p>
-        <p>{movie?.vote_average}</p>
-      </div>
       <img
         src={`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie?.backdrop_path}`}
-        alt={`Poster for movie`}
-        className="w-screen object-cover object-left sm:h-[400px] lg:h-[500px]"
+        alt={`Main poster for ${movie?.title}`}
+        className="w-screen object-cover object-top sm:h-[400px] lg:h-[500px]"
       />
-      <div className="bg-neutral flex lg:items-center lg:pb-5 ">
+      <div className="bg-neutral flex items-center px-2 py-10 text-sm md:text-lg lg:items-center lg:pb-5">
         <img
           src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${movie?.poster_path}`}
-          alt={` poster for movie ${movie?.title}`}
-          className="duration-400 w-80 object-cover object-top transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-105 hover:cursor-pointer sm:hidden lg:ml-5 lg:block lg:rounded-md lg:outline lg:outline-2 lg:outline-offset-2 lg:outline-primary"
+          alt={`poster for movie ${movie?.title}`}
+          className="w-1/3 rounded-md md:w-1/5"
         />
-        <div className="flex w-full justify-start text-lg sm:p-8 lg:ml-10 lg:mt-5 lg:w-1/3 lg:text-2xl">
+        <div className="flex w-full  sm:p-8 md:justify-start lg:ml-10 lg:mt-5 lg:w-1/3 lg:text-2xl">
           <div className="flex flex-col">
             <p className="">Title</p>
             <p className="">Rating</p>

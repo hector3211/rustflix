@@ -8,8 +8,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Menu } from "lucide-react";
@@ -35,15 +33,18 @@ function Desktop() {
       className={`${
         navColor ? "bg-gray-100/20 backdrop-blur-lg" : "bg-transparent"
       }
-       fixed top-0 z-50 hidden w-full items-center justify-between px-5 py-3 md:flex`}
+       fixed top-0 z-50 hidden w-full items-center justify-between px-3 py-3 md:flex lg:px-5`}
     >
       <Link href={"/"}>
         <h1 className="font-extrabold text-orange-500 hover:cursor-pointer md:text-3xl">
           Rustflix
         </h1>
       </Link>
-      <div className="flex items-center space-x-1">
-        <Button variant={"link"} className="active:scale-96 hover:scale-105">
+      <div className="flex items-center">
+        <Button
+          variant={"link"}
+          className="active:scale-96 px-0 hover:scale-105"
+        >
           <Link href={"/"}>Home</Link>
         </Button>
         {isSignedIn || user ? (
