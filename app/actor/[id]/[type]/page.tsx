@@ -30,7 +30,7 @@ export default async function Page({
 }) {
   const data = await routeData(params.id);
   return (
-    <div className="flex flex-col pt-4">
+    <div className="flex flex-col py-8 pt-4">
       <div className="flex justify-around">
         <img
           src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${data?.actorInfo?.profile_path}`}
@@ -52,7 +52,7 @@ export default async function Page({
           </div>
         </div>
       </div>
-      <div className=" mt-4">
+      <div className="mt-8">
         <Caoursel
           videos={data?.pastMovie?.cast as Movie[] | TvShow[]}
           type={params.type}
