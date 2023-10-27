@@ -44,7 +44,7 @@ export default async function Page({ params }: { params: { id: number } }) {
           </div>
           <div className="ml-8 flex w-3/4 flex-col">
             <p>{movie?.title}</p>
-            <p>{movie?.vote_average.toFixed(1)}</p>
+            <p>{movie?.vote_average.toFixed(1) || 0}</p>
             <p>
               {movie?.budget.toLocaleString("en-US", {
                 style: "currency",
