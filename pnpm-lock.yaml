@@ -29,9 +29,6 @@ dependencies:
   drizzle-orm:
     specifier: ^0.28.6
     version: 0.28.6(@vercel/postgres@0.5.0)(postgres@3.4.0)
-  ignore-loader:
-    specifier: ^0.1.2
-    version: 0.1.2
   lucide-react:
     specifier: ^0.284.0
     version: 0.284.0(react@18.2.0)
@@ -41,9 +38,6 @@ dependencies:
   next-themes:
     specifier: ^0.2.1
     version: 0.2.1(next@13.5.4)(react-dom@18.2.0)(react@18.2.0)
-  node-fetch:
-    specifier: ^2.7.0
-    version: 2.7.0
   postgres:
     specifier: ^3.4.0
     version: 3.4.0
@@ -59,9 +53,6 @@ dependencies:
   svix:
     specifier: ^1.13.0
     version: 1.13.0
-  swiper:
-    specifier: ^10.3.1
-    version: 10.3.1
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
@@ -2734,10 +2725,6 @@ packages:
     resolution: {integrity: sha512-2bsegYkkHO+h/9MGbn6KWcE45cHZgPANo5LXF7EvWdT0yT2EguSVO1nDgU5c8+ZOPwp2vMNa7YFsJhVcDR9Sdg==}
     dev: true
 
-  /ignore-loader@0.1.2:
-    resolution: {integrity: sha512-yOJQEKrNwoYqrWLS4DcnzM7SEQhRKis5mB+LdKKh4cPmGYlLPR0ozRzHV5jmEk2IxptqJNQA5Cc0gw8Fj12bXA==}
-    dev: false
-
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
@@ -4032,11 +4019,6 @@ packages:
       url-parse: 1.5.10
     transitivePeerDependencies:
       - encoding
-    dev: false
-
-  /swiper@10.3.1:
-    resolution: {integrity: sha512-24Wk3YUdZHxjc9faID97GTu6xnLNia+adMt6qMTZG/HgdSUt4fS0REsGUXJOgpTED0Amh/j+gRGQxsLayJUlBQ==}
-    engines: {node: '>= 4.7.0'}
     dev: false
 
   /swr@2.2.0(react@18.2.0):

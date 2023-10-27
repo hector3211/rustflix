@@ -49,8 +49,10 @@ export default async function Page({ params }: { params: { id: number } }) {
             <p>{show?.number_of_seasons}</p>
             <p>{show?.number_of_episodes}</p>
             <div className="flex flex-wrap">
-              {show?.genres.map((genre) => (
-                <p className="px-1">{genre.name}</p>
+              {show?.genres.map((genre, idx) => (
+                <p key={idx} className="px-1">
+                  {genre.name}
+                </p>
               ))}
             </div>
             <p>{show?.first_air_date}</p>

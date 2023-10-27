@@ -1,26 +1,20 @@
 import { SignIn } from "@clerk/nextjs";
-import { Metadata } from "next";
 
-// export const runtime = "edge";
-
-export const metadata: Metadata = {
-    title: "Sign in",
-};
-export default function({
-    searchParams,
+export default function Page({
+  searchParams,
 }: {
-    searchParams: {
-        redirectUrl?: string;
-    };
+  searchParams: {
+    redirectUrl?: string;
+  };
 }) {
-    const { redirectUrl } = searchParams || {};
-    return (
-        <section className="py-24">
-            <div className="container">
-                <div className="flex justify-center">
-                    <SignIn redirectUrl={redirectUrl} />
-                </div>
-            </div>
-        </section>
-    );
+  const { redirectUrl } = searchParams || {};
+  return (
+    <section className="py-24">
+      <div className="container">
+        <div className="flex justify-center">
+          <SignIn redirectUrl={redirectUrl} />
+        </div>
+      </div>
+    </section>
+  );
 }

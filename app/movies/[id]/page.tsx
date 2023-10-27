@@ -52,8 +52,10 @@ export default async function Page({ params }: { params: { id: number } }) {
               })}
             </p>
             <div className="flex">
-              {movie?.genres.map((genre) => (
-                <p className="px-1">{genre.name}</p>
+              {movie?.genres.map((genre, idx) => (
+                <p key={idx} className="px-1">
+                  {genre.name}
+                </p>
               ))}
             </div>
             <p>{movie?.release_date}</p>
