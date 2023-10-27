@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Movie, VideoType } from "@/app/lib/types";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "./ui/button";
 
 type CaourselProps = {
   videos: Movie[] | undefined;
@@ -56,14 +55,12 @@ function DesktopCaoursel({ videos, type }: CaourselProps) {
   return (
     <div className="hidden md:block">
       <div className="relative">
-        {currIdx > 0 ? (
-          <Button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 z-40 h-7 w-7 -translate-y-1/2 transform rounded-full bg-black p-1 text-white hover:bg-zinc-900"
-          >
-            <ChevronLeft />
-          </Button>
-        ) : null}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 z-40 -translate-y-1/2 transform rounded-full bg-black p-2 text-white hover:bg-gray-700"
+        >
+          <ChevronLeft />
+        </button>
         <div className="scrollbar-hide flex max-w-full space-x-2 overflow-auto p-4">
           {videoData?.map((video, idx) => (
             <div key={idx} className="flex flex-col space-y-1">
@@ -71,18 +68,18 @@ function DesktopCaoursel({ videos, type }: CaourselProps) {
                 <img
                   src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${video.poster_path}`}
                   alt={` poster for movie ${idx}`}
-                  className="min-w-[100px] rounded-md object-cover  object-top transition delay-300 duration-100 ease-in-out hover:-translate-y-1 hover:scale-110 hover:cursor-pointer"
+                  className="duration-400 h-44 w-44 rounded-md  object-cover object-top transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-110 hover:cursor-pointer md:h-52 md:w-64"
                 />
               </Link>
             </div>
           ))}
         </div>
-        <Button
+        <button
           onClick={nextSlide}
-          className="absolute right-4 top-1/2 z-40 h-7 w-7 -translate-y-1/2 transform rounded-full bg-black p-1 text-white hover:bg-zinc-900 lg:right-8"
+          className="absolute right-4 top-1/2 z-40 -translate-y-1/2 transform rounded-full bg-black p-2 text-white hover:bg-gray-700"
         >
           <ChevronRight />
-        </Button>
+        </button>
       </div>
     </div>
   );
@@ -90,15 +87,17 @@ function DesktopCaoursel({ videos, type }: CaourselProps) {
 
 function MobileCaoursel({ videos, type }: CaourselProps) {
   return (
-    <div className="scrollbar-hide flex max-w-full space-x-1 overflow-x-auto scroll-smooth p-4 md:hidden">
+    <div className="scrollbar-hide flex max-w-full space-x-2 overflow-x-auto scroll-smooth p-4 md:hidden">
       {videos?.map((video, idx) => (
-        <Link key={video.id} href={`/${type}/${video.id}`} className="">
-          <img
-            src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${video.poster_path}`}
-            alt={` poster for movie ${idx}`}
-            className="duration-400 min-w-[100px] rounded-md object-cover object-top transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-110 hover:cursor-pointer"
-          />
-        </Link>
+        <div key={idx} className="flex flex-col space-y-1">
+          <Link href={`/${type}/${video.id}`} className="min-w-[150px]">
+            <img
+              src={`https://image.tmdb.org/t/p/w370_and_h556_bestv2/${video.poster_path}`}
+              alt={` poster for movie ${idx}`}
+              className="duration-400 h-44 w-28 rounded-md  object-cover object-top transition delay-100 ease-in-out hover:-translate-y-1 hover:scale-110 hover:cursor-pointer md:h-52 md:w-64"
+            />
+          </Link>
+        </div>
       ))}
     </div>
   );

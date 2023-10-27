@@ -33,14 +33,14 @@ function Desktop() {
       className={`${
         navColor ? "bg-gray-100/20 backdrop-blur-lg" : "bg-transparent"
       }
-       fixed top-0 z-50 hidden w-full items-center justify-between px-3 py-3 md:flex lg:px-5`}
+       fixed top-0 z-50 hidden w-full items-center justify-between px-10 py-3 md:flex`}
     >
       <Link href={"/"}>
         <h1 className="font-extrabold text-orange-500 hover:cursor-pointer md:text-3xl">
           Rustflix
         </h1>
       </Link>
-      <div className="flex items-center">
+      <div className="flex items-center space-x-3">
         <Button
           variant={"link"}
           className="active:scale-96 px-0 hover:scale-105"
@@ -52,12 +52,17 @@ function Desktop() {
             <Link href={`/user/videos`}>Favorites</Link>
           </Button>
         ) : null}
-        {!isLoaded || !userId ? (
-          <SignInButton />
-        ) : (
-          <UserButton afterSignOutUrl="/" />
-        )}
         <ThemeToggleButton />
+        <Button
+          variant={"ghost"}
+          className="hover:scale-105 hover:bg-transparent active:scale-95"
+        >
+          {!isLoaded || !userId ? (
+            <SignInButton />
+          ) : (
+            <UserButton afterSignOutUrl="/" />
+          )}
+        </Button>
       </div>
     </div>
   );
@@ -90,7 +95,7 @@ function Mobile() {
           Rustflix
         </h1>
       </Link>
-      <div className="flex">
+      <div className="flex items-center">
         <ThemeToggleButton />
         <DropdownMenu open={open} onOpenChange={setOpen}>
           <DropdownMenuTrigger asChild>
