@@ -37,7 +37,7 @@ export default function DeleteButton(data: ButtonProps) {
     <>
       <Button
         onClick={() => deleteVideo(data.userId!, data.movieId!)}
-        className="w-full hover:scale-105 active:scale-95"
+        className="w-full hover:scale-105 hover:bg-rose-400 active:scale-95"
       >
         Delete
       </Button>

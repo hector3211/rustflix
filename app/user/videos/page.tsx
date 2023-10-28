@@ -26,9 +26,11 @@ export default async function Page() {
   const user = await currentUser();
   const videos = await routeData(user?.id);
   return (
-    <div className="flex min-h-[780px] flex-col px-5">
-      <div className="flex w-full flex-col py-10">
-        <h1 className="text-xl font-medium">Your Favotie Moives And Shows</h1>
+    <div className="flex min-h-[820px] flex-col px-5 pb-10">
+      <div className="container mx-auto flex flex-col py-10">
+        <h1 className="text-xl font-medium lg:text-2xl lg:font-semibold">
+          Your Favotie Moives And Shows
+        </h1>
         <div>
           <p className="text-sm font-light">{`${user?.firstName}'s video list`}</p>
         </div>

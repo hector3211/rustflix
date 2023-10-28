@@ -36,7 +36,7 @@ export default function AddButton(data: ButtonProps) {
     <>
       <Button
         onClick={() => addVideo(data)}
-        className="absolute right-10 top-1/2 w-28 bg-gradient-to-tr from-orange-500 to-red-500 text-lg active:scale-105 "
+        className="mx-auto w-3/4 hover:scale-105 active:scale-95 md:absolute md:left-[47%] md:top-[67%] md:w-60  md:text-lg lg:left-[28%]"
       >
         Add
       </Button>

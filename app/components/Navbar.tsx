@@ -36,15 +36,12 @@ function Desktop() {
        fixed top-0 z-50 hidden w-full items-center justify-between px-10 py-3 md:flex`}
     >
       <Link href={"/"}>
-        <h1 className="font-extrabold text-orange-500 hover:cursor-pointer md:text-3xl">
+        <h1 className="font-extrabold text-orange-500 hover:scale-105 hover:cursor-pointer active:scale-95 md:text-3xl">
           Rustflix
         </h1>
       </Link>
       <div className="flex items-center space-x-3">
-        <Button
-          variant={"link"}
-          className="active:scale-96 px-0 hover:scale-105"
-        >
+        <Button variant={"link"} className="active:scale-96 hover:scale-105">
           <Link href={"/"}>Home</Link>
         </Button>
         {isSignedIn || user ? (
@@ -52,7 +49,6 @@ function Desktop() {
             <Link href={`/user/videos`}>Favorites</Link>
           </Button>
         ) : null}
-        <ThemeToggleButton />
         <Button
           variant={"ghost"}
           className="hover:scale-105 hover:bg-transparent active:scale-95"
@@ -63,6 +59,7 @@ function Desktop() {
             <UserButton afterSignOutUrl="/" />
           )}
         </Button>
+        <ThemeToggleButton />
       </div>
     </div>
   );

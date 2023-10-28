@@ -28,7 +28,7 @@ export default async function Hero({ featuredItem }: HeroProps) {
         />
         <div className="absolute bottom-0 left-0 z-40 h-16 w-full bg-transparent  bg-gradient-to-b from-gray-900/5 to-zinc-950" />
       </div>
-      <div className="absolute left-5 top-1/4 max-h-[20rem] max-w-[500px] rounded-md bg-zinc-950/90 p-5 text-lg text-white backdrop-blur-lg  lg:absolute lg:left-14 lg:top-[45%] lg:max-w-[600px] lg:rounded-lg">
+      <div className="left-5  top-[20%] block max-h-[20rem] w-full  rounded-md bg-zinc-950/90 p-5 text-lg text-white backdrop-blur-lg md:absolute   md:max-w-[40%] lg:left-14 lg:top-[45%] lg:max-w-[500px] lg:rounded-lg">
         <div className="flex items-center space-x-1 py-1 text-sm">
           <h1 className="text-3xl font-bold lg:text-5xl">
             {isMovie(featuredItem)
