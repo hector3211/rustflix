@@ -8,6 +8,7 @@ export default authMiddleware({
     "/signin(.*)",
     "/signup(.*)",
     "/api/webhooks/user",
+    "/api/hello",
   ],
 });
 
